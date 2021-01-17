@@ -69,7 +69,7 @@ def simulate_protfolio (portfolio_pos):
     ticket_prices = { key:portfolio_pos[key]['currentMarketValue']/portfolio_pos[key]['openQuantity'] for key in portfolio_pos.keys()}
     
     for key in portfolio_pos:
-        portfolio_pos[key]['openQuantity'] = portfolio_pos[key]['openQuantity'] * (135 + random.uniform(-0, 0))
+        portfolio_pos[key]['openQuantity'] = portfolio_pos[key]['openQuantity'] * (135 + random.uniform(-135*0.2, 135*0.2))
         portfolio_pos[key]['currentMarketValue'] = portfolio_pos[key]['openQuantity'] * ticket_prices[key]
         
     return portfolio_pos

@@ -14,6 +14,7 @@ import numpy as np
 import random
 import collections
 import json
+from datetime import date
 
 with open('keys.json') as f:
     setting_keys = json.load(f)
@@ -33,7 +34,7 @@ portfolio_target = {
     'ZSP.TO':0.275, 
     'XMU.TO':0.15}
 
-yearly_withdrawal = 0.05 # 5 pecent
+yearly_withdrawal = 0.04 # 4 pecent
 
 
 def send_email (html_content, setting_keys = setting_keys):
@@ -283,9 +284,55 @@ def gen_text (shares_to_buy, target_obj = target_obj):
     
     return message
 
+def gen_html(shares_to_buy, target_obj = target_obj):
+    f_main = open("./email_template/template.html", "rt")
+    f_line_item = open("./email_template/line_items.html", "rt")
+    f_subtotal = open("./email_template/subtotal.html", "rt")
+    f_fees = open("./email_template/fees.html", "rt")
+    
+    main = f_main.read()
+    line_item = f_line_item.read()
+    subtotal = f_subtotal.read()
+    fees = f_fees.read()
+    
+    f_main.close()
+    f_line_item.close()
+    f_subtotal.close()
+    f_fees.close()
+    
+    ticket_names = list(shares_to_buy.keys())
+    line_item_combos=""
+    subtotal_val = 0
+    for i in range(target_obj['num_tickets']):
+        ticket_name = ticket_names[i]
+        q_to_buy = shares_to_buy[ticket_name]
+        market_val = q_to_buy * target_obj['ticket_prices'][i]
+        line_item_temp = line_item.replace('replace_with_line_item_name', ticket_name)
+        line_item_temp = line_item_temp.replace('replace_with_line_item_quantity',  f"{q_to_buy:d}")
+        line_item_temp = line_item_temp.replace('replace_with_line_item_val', f"{market_val:.2f}")
+        line_item_combos = line_item_combos + ' \n ' + line_item_temp
+        
+        subtotal_val += market_val
+        
+    subtotal = subtotal.replace('replace_with_subtotal_val', f"{subtotal_val:.2f}")
+    fees = fees.replace('replace_with_fee_val', f"{-target_obj['fees']:.2f}")
+    
+    total_val = subtotal_val - target_obj['fees']
+    
+    main = main.replace('replace_with_date', str(date.today()))
+    main = main.replace('replace_with_line_items', line_item_combos )
+    main = main.replace('replace_with_subtotal', subtotal )
+    main = main.replace('replace_with_fees', fees)
+    main = main.replace('replace_with_total_val', f"{total_val:.2f}" )
+    
+    return main
 
-# send_sms(gen_text (shares_to_buy, target_obj = target_obj))
-send_email (gen_text (shares_to_buy, target_obj = target_obj), setting_keys = setting_keys)
+
+if setting_keys["enable_sms"]:
+    send_sms(gen_text (shares_to_buy, target_obj = target_obj))
+
+if setting_keys["enable_email"]:
+    send_email (gen_html (shares_to_buy, target_obj = target_obj), setting_keys = setting_keys)
 
 
 

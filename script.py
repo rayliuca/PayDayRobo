@@ -41,7 +41,7 @@ def send_email (html_content, setting_keys = setting_keys):
     message = Mail(
         from_email=setting_keys['from_email'],
         to_emails=setting_keys['to_email'],
-        subject='Sending with Twilio SendGrid is Fun',
+        subject='PayDayRobo - Time to Get A Pay Check!',
         html_content=html_content)
     try:
         sg = SendGridAPIClient(setting_keys['SENDGRID_API_KEY'])

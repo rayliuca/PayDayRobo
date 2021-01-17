@@ -24,8 +24,23 @@ This project is built using Python with ❤️
 
 3. save the crontab file
 
-## Accomplishments that we're proud of
+## Accomplishments that we're proud of:
 Got the script working!
+### Goals:
+1. - [x] Communicate Questrade API
+2. - [x] Minimize the portfolio allocation error using genetic algorithm  
+3. - [x] Send the result via SMS
+4. - [x] Send the result via email
+5. - [x] Deploy the project as a cron job in a VM on Google Cloud
+6. - [x] Make the Email Beautiful (HTML) (stretch goal)
+7. - [ ] Dockerize the project (stretch goal)
+8. - [ ] Deploy the project in some sort of
+Kubernetes compute service (stretch goal)
+9. - [ ] Incorporate some sort of adjusted cost base (ACB) calculation at the beginning of each year for income tax purpose (stretch goal)
+
+
+
+
 
 ## What's next for PayDayRobo
 Dockerize the script

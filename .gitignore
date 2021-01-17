@@ -127,3 +127,4 @@ dmypy.json
 # Sensitive Keys
 *.json
 *.yml
+*.pptx

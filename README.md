@@ -30,20 +30,19 @@ Got the script working!
 1. - [x] Communicate Questrade API
 2. - [x] Minimize the portfolio allocation error using genetic algorithm  
 3. - [x] Send the result via SMS
-4. - [x] Send the result via email
-5. - [x] Deploy the project as a cron job in a VM on Google Cloud
-6. - [x] Make the Email Beautiful (HTML) (stretch goal)
-7. - [ ] Dockerize the project (stretch goal)
-8. - [ ] Deploy the project in some sort of
+4. - [x] Setup my domain with
+5. - [x] Send the result via email
+6. - [x] Deploy the project as a cron job in a VM on Google Cloud
+7. - [x] Make the Email Beautiful (HTML) (stretch goal)
+8. - [ ] Dockerize the project (stretch goal)
+9. - [ ] Deploy the project in some sort of
 Kubernetes compute service (stretch goal)
-9. - [ ] Incorporate some sort of adjusted cost base (ACB) calculation at the beginning of each year for income tax purpose (stretch goal)
+10. - [ ] Incorporate some sort of adjusted cost base (ACB) calculation at the beginning of each year for income tax purpose (stretch goal)
 
+## Flowchart
 
+<img src="./assets/FlowChart.png" alt="PayDayRobo script flowchart" />
 
-
-
-## What's next for PayDayRobo
-Dockerize the script
 
 ## Notification Sample
 SMS:

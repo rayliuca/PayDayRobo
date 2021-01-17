@@ -31,11 +31,11 @@ Dockerize the script
 ## Notification Sample
 SMS:
 
-![SMS message](./assets/SMS.png)
+<img src="./assets/SMS.png" alt="SMS message" width="250"/>
 
 Email:
 
-![Email message](./assets/email.png)
+<img src="./assets/email.png" alt="Email message" width="250"/>
 
 (The BEE Team was used to generate the Email design)
 

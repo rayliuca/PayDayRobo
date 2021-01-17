@@ -53,7 +53,7 @@ Email:
 
 <img src="./assets/email.png" alt="Email message" width="250"/>
 
-(The BEE Team was used to generate the Email design)
+(The BEE project from MailUp was used to generate the Email design)
 
 ## License
 My work is released under the [MIT license](LICENSE)

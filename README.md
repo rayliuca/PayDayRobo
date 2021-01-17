@@ -30,7 +30,14 @@ Dockerize the script
 
 ## Notification Sample
 SMS:
+
 ![SMS message](./assets/SMS.png)
 
 Email:
+
 ![Email message](./assets/email.png)
+
+(The BEE Team was used to generate the Email design)
+
+## License
+My work is released under the [MIT license](LICENSE)

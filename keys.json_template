@@ -1,0 +1,12 @@
+{
+	"account_sid" :	"AC428cf59d2f5b933c3ed5c0a24520fa36",
+	"auth_token" :	"9eada21fc36739657472352387728c1b",
+	"messaging_service_sid" :	"MG4c64d313b9a832ce12fga5f6fc5c2e41",
+	"reciver_phone" : "+15871234567",
+	"access_code" : "FdYp5f7jjwhPmQHUWi36KQ_UZKMqMqyx6",
+	"SENDGRID_API_KEY" : "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",
+	"from_email" : "sender@example.com",
+	"to_email" : "receiver@example.com",
+	"enable_sms" : false,
+	"enable_email" : true
+} 

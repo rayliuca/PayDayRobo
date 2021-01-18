@@ -69,7 +69,7 @@ def simulate_protfolio (portfolio_pos):
     ticket_prices = { key:portfolio_pos[key]['currentMarketValue']/portfolio_pos[key]['openQuantity'] for key in portfolio_pos.keys()}
     
     for key in portfolio_pos:
-        portfolio_pos[key]['openQuantity'] = portfolio_pos[key]['openQuantity'] * (135 + random.uniform(-135*0.2, 135*0.2))
+        portfolio_pos[key]['openQuantity'] = portfolio_pos[key]['openQuantity'] * (135 + random.uniform(-135*0.05, 135*0.05))
         portfolio_pos[key]['currentMarketValue'] = portfolio_pos[key]['openQuantity'] * ticket_prices[key]
         
     return portfolio_pos
@@ -94,7 +94,16 @@ def get_current_portfolio (qtrade):
     return portfolio_pos
 
 def gen_fees(individual):
-    fees = individual*0.01+4.95
+    individual = np.array(individual)
+    # fees = individual*0.01 + 4.95*individual/(individual+0.0001)
+    fees = individual*0.01
+    
+    min_fee = 4.95
+    less_than_min = fees < min_fee
+    none_0 = fees > 0
+    fees[less_than_min*none_0] = min_fee
+    
+    fees = (fees.round(2))
     return fees
 
 def create_individual(data):
@@ -199,7 +208,7 @@ def fitness(individual, target_obj):
     portfolio_error = ((residue_portfolio_alloc - target_mix)**2).sum()*10
 
     
-    fit = val_error + portfolio_error + fees/300
+    fit = val_error + portfolio_error + fees/1000
     
     return fit
 
@@ -333,6 +342,8 @@ if setting_keys["enable_sms"]:
 
 if setting_keys["enable_email"]:
     send_email (gen_html (shares_to_buy, target_obj = target_obj), setting_keys = setting_keys)
+    
+
 
 
 

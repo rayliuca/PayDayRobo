@@ -20,7 +20,7 @@ This project is built using Python with ❤️
 1. open the crontab: crontab -e
 2. add an entry so it runs on the first day of every month:
 
-  0 0 1 * * /full_path/PayDayRobo/script.py
+  0 12 1 * * /full_path/PayDayRobo/script.py
 
 3. save the crontab file
 
